@@ -23,7 +23,7 @@ public class Client
         Regex rgx = new Regex(_pattern);
         _infix = rgx.Replace(infix, _replacement);
 
-        BasicFactory _factory = new BasicFactory();
+        AbstractFactory _factory = new BasicFactory();
         Stack<Command> _postfix = new Stack<Command>();
         new InfixToPostfix(_factory, ref _postfix, _infix); 
         Evaluator _evaluator = new Evaluator(_postfix);

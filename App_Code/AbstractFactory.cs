@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Interface describes products created by factory.
 /// </summary>
-public interface AbstractFactory
+interface AbstractFactory
 {
 
      NumberCommand CreateNumberCommand(int number);
