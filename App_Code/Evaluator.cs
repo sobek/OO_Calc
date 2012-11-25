@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
+/// Evaluates the postfix stack and returns the integer result.
 /// @in: Stack<command>
 /// @out: int
 /// </summary>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Interface describes products created by factory.
+/// Abstract class describes products created by factory.
 /// </summary>
 public abstract class AbstractFactory
 {

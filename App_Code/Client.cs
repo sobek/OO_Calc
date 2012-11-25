@@ -5,7 +5,7 @@ using System.Web;
 using System.Text.RegularExpressions;
 
 /// <summary>
-/// Summary description for Client
+/// Entry point to the rest of the program. 
 /// </summary>
 
 

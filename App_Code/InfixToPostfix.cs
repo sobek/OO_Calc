@@ -7,6 +7,7 @@ using System.Web;
 /// @in: BasicFactory
 /// @in: Stack<Command>
 /// @in: string
+/// Creates postfix stack from infix input.
 ///</summary>
 ///
 //want to add additional feature.  separate conversion to new method. convert(stack)
@@ -21,7 +22,7 @@ public class InfixToPostfix
         _infix = infix;
         _cmd = null;
 
-        //explore using delegate if time remains to tweak.
+        //explore using delegates and reflection if time remains to tweak.
         foreach (char _input in _infix)
         {
             switch (_input)
