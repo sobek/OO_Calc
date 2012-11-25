@@ -6,13 +6,13 @@ using System.Web;
 /// <summary>
 /// Interface describes products created by factory.
 /// </summary>
-public interface AbstractFactory
+public abstract class AbstractFactory
 {
 
-     NumberCommand CreateNumberCommand(int number);
-     AddCommand CreateAddCommand();
-     SubtractCommand CreateSubtractCommand();
-     MultiplyCommand CreateMultiplyCommand();
-     DivideCommand CreateDivideCommand();
-     ModulusCommand CreateModulusCommand();
+     public abstract NumberCommand CreateNumberCommand(int number);
+     public abstract AddCommand CreateAddCommand();
+     public abstract SubtractCommand CreateSubtractCommand();
+     public abstract MultiplyCommand CreateMultiplyCommand();
+     public abstract DivideCommand CreateDivideCommand();
+     public abstract ModulusCommand CreateModulusCommand();
 }
