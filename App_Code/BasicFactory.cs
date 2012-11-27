@@ -15,32 +15,32 @@ public class BasicFactory : AbstractFactory
     { 
         //Prevent calling constructor with Command type.
     }
-    override public NumberCommand CreateNumberCommand(int number)
+    override public Command CreateNumberCommand(int number)
     {
         return new NumberCommand(number);
     }
     
-    override public AddCommand CreateAddCommand()
+    override public Command CreateAddCommand()
     {
         return new AddCommand();
     }
     
-    override public SubtractCommand CreateSubtractCommand()
+    override public Command CreateSubtractCommand()
     {
         return new SubtractCommand();    
     }
       
-    override public MultiplyCommand CreateMultiplyCommand()
+    override public Command CreateMultiplyCommand()
     {
         return new MultiplyCommand();
     }
        
-    override public DivideCommand CreateDivideCommand()
+    override public Command CreateDivideCommand()
     {
         return new DivideCommand();
     }
        
-    override public ModulusCommand CreateModulusCommand()
+    override public Command CreateModulusCommand()
     {
         return new ModulusCommand();    
     }

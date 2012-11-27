@@ -9,10 +9,10 @@ using System.Web;
 public abstract class AbstractFactory
 {
 
-     public abstract NumberCommand CreateNumberCommand(int number);
-     public abstract AddCommand CreateAddCommand();
-     public abstract SubtractCommand CreateSubtractCommand();
-     public abstract MultiplyCommand CreateMultiplyCommand();
-     public abstract DivideCommand CreateDivideCommand();
-     public abstract ModulusCommand CreateModulusCommand();
+     public abstract Command CreateNumberCommand(int number);
+     public abstract Command CreateAddCommand();
+     public abstract Command CreateSubtractCommand();
+     public abstract Command CreateMultiplyCommand();
+     public abstract Command CreateDivideCommand();
+     public abstract Command CreateModulusCommand();
 }
