@@ -1,0 +1,28 @@
+﻿@helper Form(string user_input, int result, bool post) {
+    string _response_string = user_input;
+    if(post)
+    {
+        _response_string = string.Format("{0} = {1}", user_input, Convert.ToString(result));
+    }
+    
+    <form = "expression_input" method = "post" action = "" >
+        <textarea
+            autofocus = "autofocus"
+            cols = "50"
+            rows = "1"
+            id = "expression"
+            name = "expression"
+            >
+            </textarea>
+        <br />
+        <button type = "submit"
+            id = "submit_button"
+            >
+            Submit your expression!
+        </button>   
+        <br />
+        @_response_string
+    </form>  
+     
+   
+}
