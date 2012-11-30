@@ -10,10 +10,10 @@ using System.Web;
 /// </summary>
 public class Evaluator
 {
-    List<Command> _postfix = new List<Command>();
+    Stack<Command> _postfix = new Stack<Command>();
     public Evaluator(Stack<Command> postfix)
     {
-        _postfix = new List<Command>(postfix.Reverse());
+        _postfix = new Stack<Command>(postfix);
     }
 
     public int calculate()

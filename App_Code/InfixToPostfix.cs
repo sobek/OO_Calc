@@ -10,59 +10,51 @@ using System.Web;
 /// Creates postfix stack from infix input.
 ///</summary>
 ///
-//want to add additional feature.  separate conversion to new method. convert(stack)
 public class InfixToPostfix
 {
-    private string _infix;
+    private string[] _infix;
     private Command _cmd;
     private Stack<Command> _temp_stack = new Stack<Command>();
 
     public InfixToPostfix(AbstractFactory factory, ref Stack<Command> postfix, string infix)
     {
-        _infix = infix;
+        _infix = infix.Split(' ');
         _cmd = null;
-        //add method hashtable and change to using a delegate to eliminate switch statement.
-        //private delegate Command CommandChooser();
-        //Hashtable methods = new Hashtable();
-        //methods.add("_*_", new CommandChooser(Create_*_NumberCommand(_*_));
-        //((CommandChooser)methods[key])();
-        //also examine InvokeMember to use reflection.
-        foreach (char _input in _infix)
+        foreach (string _input in _infix)
         {
             switch (_input)
             {
-                case '+':
+                case "+":
                     _cmd = factory.CreateAddCommand();
                     break;
-                case '-':
+                case "-":
                     _cmd = factory.CreateSubtractCommand();
                     break;
-                case '*':
+                case "*":
                     _cmd = factory.CreateMultiplyCommand();
                     break;
-                case '/':
+                case "/":
                     _cmd = factory.CreateDivideCommand();
                     break;
-                case '%':
+                case "%":
                     _cmd = factory.CreateModulusCommand();
                     break;
-                case '(':
-                case ')':
+                case "(":
+                case ")":
                     _cmd = null;
                     break;
                 default:
-                    double _input_to_double = Char.GetNumericValue(_input);
-                    int _input_to_int = Convert.ToInt32(_input_to_double);
+                    int _input_to_int = Convert.ToInt32(_input); 
                     _cmd = factory.CreateNumberCommand(_input_to_int);
                     break;
             }
-            /************* Shunting Yard ****************/
+/************* Shunting Yard Algorithm****************/
             switch (_input)
             {
-                case '(':
+                case "(":
                     _temp_stack.Push(_cmd); //pushes null
                     break;
-                case ')':
+                case ")":
                     do
                     {
                         _temp_stack.Pop();
@@ -70,8 +62,8 @@ public class InfixToPostfix
                     } while (_temp_stack.Peek() != null);
                     _temp_stack.Pop();  //should remove null from _temp_stack.
                     break;
-                case '+':
-                case '-':
+                case "+":
+                case "-":
                     if (_temp_stack.Count() > 0)
                     {
                         postfix.Push(_temp_stack.Pop());
@@ -82,9 +74,9 @@ public class InfixToPostfix
                         _temp_stack.Push(_cmd);
                     }
                     break;
-                case '*':
-                case '/':
-                case '%':
+                case "*":
+                case "/":
+                case "%":
                     _temp_stack.Push(_cmd);
                     break;
                 default: //a number, by elimination, if my input and parsing are correct.
