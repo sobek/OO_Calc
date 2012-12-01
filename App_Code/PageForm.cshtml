@@ -1,27 +1,29 @@
 ﻿@helper Form(string user_input, int result, bool post) {
     string _response_string = user_input;
-    if(post)
+    if(IsPost)
     {
         _response_string = string.Format("{0} = {1}", user_input, Convert.ToString(result));
     }
     
-    <form id = "expression_input" method = "post" action = "" >
+    <form id = "expression_input" method = "post" action = "">
         <input = "text"
             autofocus = "autofocus"
             size = "75"
             id = "expression"
             name = "expression"
             autocomplete = "off"
+            value = "33 + 45" 
             />
         <br />
-        <button type = "submit"
-            id = "submit_button"
-            >
-            Submit your expression!
-        </button>   
+        <div id = "variable_area">
+            @_response_string
+        </div>
+        
         <br />
-        @_response_string
+        <input type = "submit"
+            id = "submit_button"
+            value ="Submit your expression!"
+        />        
     </form>  
-     
-   
+
 }

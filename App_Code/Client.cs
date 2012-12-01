@@ -13,15 +13,10 @@ public class Client
 {
     private int _result;
     private string _infix;
-    private string _replacement;
-    private string _pattern;
 
     public Client(string infix)
     {
-        _pattern = "\\s+";
-        _replacement = "";
-        Regex rgx = new Regex(_pattern);
-        _infix = rgx.Replace(infix, _replacement);
+        _infix = infix;
 
         AbstractFactory _factory = new BasicFactory();
         Stack<Command> _postfix = new Stack<Command>();

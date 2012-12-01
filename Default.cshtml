@@ -2,21 +2,20 @@
     Layout = "/Shared/Layout.cshtml";
     string _expression = Request["expression"];
     string _pholder = "Enter your expression";
-    bool temporary = IsPost;
     int _result = 0;
+    bool temp = IsPost;
     if(IsPost)
     {
         _pholder = _expression;
-        Client _my_client = new Client(_pholder);
-        _result = _my_client.Result;
+        AbstractFactory _factory = new BasicFactory();
+        Stack<Command> _postfix = new Stack<Command>();
+        new InfixToPostfix(_factory, ref _postfix, _pholder);
+        Evaluator _evaluator = new Evaluator(_postfix);
+        _result = _evaluator.calculate();
     }
 }   
     
     <div id = "content">
         <img src = "/Images/calc_img.png" alt = "Calculator Project" id = "calcimg" />
-        @temporary
         @PageForm.Form(_pholder, _result, IsPost)
-        <div id = "variable_area">
-
-        </div>
     </div>

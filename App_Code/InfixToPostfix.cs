@@ -20,6 +20,7 @@ public class InfixToPostfix
     {
         _infix = infix.Split(' ');
         _cmd = null;
+
         foreach (string _input in _infix)
         {
             switch (_input)
@@ -59,7 +60,7 @@ public class InfixToPostfix
                     {
                         _temp_stack.Pop();
                         postfix.Push(_cmd);
-                    } while (_temp_stack.Peek() != null);
+                    } while (_temp_stack.Count > 0);
                     _temp_stack.Pop();  //should remove null from _temp_stack.
                     break;
                 case "+":
