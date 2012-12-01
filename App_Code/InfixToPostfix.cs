@@ -53,19 +53,24 @@ public class InfixToPostfix
             switch (_input)
             {
                 case "(":
-                    _temp_stack.Push(_cmd); //pushes null
+                    _temp_stack.Push(null);
                     break;
                 case ")":
-                    do
+                    while (_temp_stack.Count > 0)
                     {
-                        _temp_stack.Pop();
-                        postfix.Push(_cmd);
-                    } while (_temp_stack.Count > 0);
-                    _temp_stack.Pop();  //should remove null from _temp_stack.
+                        if (_temp_stack.Peek() != null)
+                        {
+                            postfix.Push(_temp_stack.Pop());
+                        }
+                        else
+                        {
+                            _temp_stack.Pop();
+                        }
+                    }
                     break;
                 case "+":
                 case "-":
-                    if (_temp_stack.Count() > 0)
+                    if (_temp_stack.Count > 0 && _temp_stack.Peek() != null)
                     {
                         postfix.Push(_temp_stack.Pop());
                         _temp_stack.Push(_cmd);
