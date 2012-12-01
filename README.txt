@@ -1,6 +1,5 @@
 ﻿TODO:
 
-Parentheses handling not working.
 No variable support.
 Modulus is not correct. (Does not return results which match Google.)
 
@@ -10,7 +9,7 @@ Source repository:
 Demo project:
 	http://calculator-8.apphb.com
 
-My apphorbor.com project is directly linked to the github source so all execution
-uses the most up-to-date checkin.
+appharbor.com takes the code directly from github.com.  Thus the demo page will be running the
+most recent check-in.
 
 Uses C# Razor.  I don't know what special actions need to be taken in order to run properly.
