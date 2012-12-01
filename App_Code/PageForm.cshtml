@@ -1,8 +1,12 @@
 ﻿@helper Form(string user_input, int result, bool post) {
     string _response_string = user_input;
+    string _type_chooser = "placeholder";
+    string _set_value = "Please enter expression.";
     if(IsPost)
     {
         _response_string = string.Format("{0} = {1}", user_input, Convert.ToString(result));
+        _type_chooser = "value";
+        _set_value  = user_input;
     }
     
     <form id = "expression_input" method = "post" action = "">
@@ -12,7 +16,7 @@
             id = "expression"
             name = "expression"
             autocomplete = "off"
-            value = "33 + 45" 
+            @_type_chooser = "@_set_value" 
             />
         <br />
         <div id = "variable_area">

@@ -2,6 +2,7 @@
 
 Parentheses handling not working.
 No variable support.
+Modulus is not correct. (Does not return results which match Google.)
 
 Resources:
 Source repository:
