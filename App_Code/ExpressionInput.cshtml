@@ -1,4 +1,4 @@
-﻿@helper Form(string user_input, int result, bool has_error) {
+﻿@helper Form(string user_input, int result, bool has_error, string has_vars) {
     string _response_string = "";
     string _type_chooser = "placeholder";
     string _var_list = "abcdefghij";
@@ -29,7 +29,7 @@
         <br />
         <div id = "variable_area">
             @_response_string <br />
-            @if(_var_list != null){
+            @if(has_vars != null){
                 foreach (char letter in _var_list)
                 {
                     @letter <input = "text"

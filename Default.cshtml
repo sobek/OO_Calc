@@ -1,11 +1,13 @@
 ﻿@{
     Layout = "/Shared/Layout.cshtml";
     string _expression = Request["expression"];
-    string _error_msg = "";
+    string _error_msg = null;
+    string _has_vars = null;
     bool _has_errors;
     int _result = 0;
     ExpressionValidator validator = new ExpressionValidator(_expression);
     _has_errors = validator.validation(_error_msg);
+    _has_vars = validator.FindVariables();
 
     if(IsPost && !_has_errors)
     {
@@ -23,5 +25,5 @@
         {
             @_error_msg
         }
-        @ExpressionInput.Form(_expression, _result, _has_errors)
+        @ExpressionInput.Form(_expression, _result, _has_errors, _has_vars)
     </div>

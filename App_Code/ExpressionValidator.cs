@@ -66,33 +66,20 @@ public class ExpressionValidator
         }
         return false;
 	}
-    /*
-     * variable code: 02 Dec 12
+    
+    
     public string FindVariables()
     {
-        string _has_vars = null;
-        if (_expression != null)
+        MatchCollection _match_vars;
+        if(Regex.IsMatch(_expression, @"[a-j]"))
         {
-            MatchCollection matches = Regex.Matches(_expression, @"[a-j]");
-            string _string_matches = matches.ToString();
-            foreach (char match in _string_matches)
-            {
-                if (_has_vars != null)
-                {
-                    string _current_letter = "@\"" + match + "\"";
-                    if(!Regex.IsMatch(_has_vars, _current_letter))
-                    {
-                        _has_vars += match;
-                    }
-                }
-                else
-                {
-                    _has_vars += match;
-                }
-            }
+            _match_vars = Regex.Matches(_expression, @"[a-j]");
+            return _match_vars.ToString();
+        } 
+        else
+        {
+            return null;
         }
-        return _has_vars;
-    }
-*/
 
+    }
 }
