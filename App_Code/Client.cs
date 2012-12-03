@@ -20,7 +20,7 @@ public class Client
 
         AbstractFactory _factory = new BasicFactory();
         Stack<Command> _postfix = new Stack<Command>();
-        new InfixToPostfix(_factory, ref _postfix, _infix); 
+        new InfixToPostfix(_factory, _postfix, _infix); 
         Evaluator _evaluator = new Evaluator(_postfix);
         _result = _evaluator.calculate();
     }

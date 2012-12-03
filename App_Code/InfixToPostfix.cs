@@ -16,7 +16,7 @@ public class InfixToPostfix
     private Command _cmd;
     private Stack<Command> _temp_stack = new Stack<Command>();
 
-    public InfixToPostfix(AbstractFactory factory, ref Stack<Command> postfix, string infix)
+    public InfixToPostfix(AbstractFactory factory, Stack<Command> postfix, string infix)
     {
         _infix = infix.Split(' ');
         _cmd = null;
