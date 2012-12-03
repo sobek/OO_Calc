@@ -8,22 +8,11 @@ using System.Web;
 /// Command interface contains excute which returns a boolean value.
 /// </summary>
 /// 
-/*
- *      Command and inherited from: 
- *      Command /abstract/
- *      BinaryOperationCommand /abstract/ : Command
- *      NumberCommand(int) /abstract/ : Command
- *      AddCommand : BinaryOperationCommand
- *      SubtractCommand : BinaryOperationCommand
- *      MultiplyCommand : BinaryOperationCommand
- *      DivideCommand : BinaryOperationCommand
- *      ModulusCommand : BinaryOperationCommand
-*/
+
 public interface Command
 {
     bool Execute(Stack <int> stack);
 }
-//WHAT INFORMATION IS THE BOOL RETURNING TO ME!?
 public abstract class BinaryOperationCommand : Command
 {
     public abstract int Evaluate(int n1, int n2);
@@ -38,7 +27,6 @@ public abstract class BinaryOperationCommand : Command
     }
 }
 
-//What if I need to implement complex number systems?
 public class NumberCommand : Command
 {
     private int _n1;
@@ -51,7 +39,6 @@ public class NumberCommand : Command
     public bool Execute(Stack<int> stack)
     {
         stack.Push(_n1);
-        //**********************************  MUST FIX!!!! ******************************\
         return true;
     }
 }

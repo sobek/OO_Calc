@@ -5,7 +5,8 @@
     bool _has_errors;
     int _result = 0;
     ExpressionValidator validator = new ExpressionValidator(_expression);
-    _has_errors = validator.validation(ref _error_msg);
+    _has_errors = validator.validation(_error_msg);
+
     if(IsPost && !_has_errors)
     {
         AbstractFactory _factory = new BasicFactory();

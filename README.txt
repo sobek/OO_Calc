@@ -1,7 +1,8 @@
 ﻿TODO:
-
-No variable support.
-Modulus is not correct. (Does not return results which match Google.)
+Add variable support.
+-------------------------------------------------------------------------
+Everything I wanted to do client side now works server side except variables.
+I was unable to successfully POST from JQuery.
 
 Resources:
 Source repository:

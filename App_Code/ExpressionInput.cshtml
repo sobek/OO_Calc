@@ -1,8 +1,8 @@
 ﻿@helper Form(string user_input, int result, bool has_error) {
     string _response_string = "";
     string _type_chooser = "placeholder";
+    string _var_list = "abcdefghij";
     string _set_value = "Please enter expression.";
-    //string _var_string = "abcdefghij";
     if(IsPost)
     {
         if(!has_error)
@@ -28,7 +28,18 @@
             />  
         <br />
         <div id = "variable_area">
-            @_response_string
+            @_response_string <br />
+            @if(_var_list != null){
+                foreach (char letter in _var_list)
+                {
+                    @letter <input = "text"
+                        id = "@letter"
+                        name = "@letter"
+                        /> 
+                    <br />
+                }
+                _var_list = "";
+            }
         </div>
         <br />
 

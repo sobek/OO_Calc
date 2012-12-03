@@ -16,7 +16,7 @@ public class ExpressionValidator
         _expression = expression;
     }
     
-    public bool validation(ref string error)
+    public bool validation(string error)
     {
         Regex _invalid_tokens = new Regex(@"[^0-9a-z/+///*/%-\//()]?-i]");
         Regex _valid_digits = new Regex(@"[0-9]");
@@ -34,7 +34,7 @@ public class ExpressionValidator
                 }
                 else if (_valid_digits.IsMatch(_split_expression[i]) && (_valid_variables.IsMatch(_split_expression[i]) || _valid_operators.IsMatch(_split_expression[i])))
                 {
-                    error = "Please separate all values with a proper space.";
+                    error = "Please separate all values with a single press of your spacebar (copy and paste one if the spacebar is broken!).";
                     return true;
                 }
                 else if (_split_expression[i] == "/" && _split_expression[i+1] == "0")
@@ -50,6 +50,12 @@ public class ExpressionValidator
                         error = "Please check your expression for proper values around parentheses.";
                         return true;
                     }
+                    else if(i < (_split_expression.Length - 1) && _valid_operators.Match(_split_expression[i + 1]).Success)
+                    {
+                        error = "Please check your expression for proper values around parentheses.";
+                        return true;
+                    }
+                    
                 }
             }
             if (Regex.Matches(_expression, @Regex.Escape(")")).Count != Regex.Matches(_expression, @Regex.Escape("(")).Count)
@@ -60,4 +66,33 @@ public class ExpressionValidator
         }
         return false;
 	}
+    /*
+     * variable code: 02 Dec 12
+    public string FindVariables()
+    {
+        string _has_vars = null;
+        if (_expression != null)
+        {
+            MatchCollection matches = Regex.Matches(_expression, @"[a-j]");
+            string _string_matches = matches.ToString();
+            foreach (char match in _string_matches)
+            {
+                if (_has_vars != null)
+                {
+                    string _current_letter = "@\"" + match + "\"";
+                    if(!Regex.IsMatch(_has_vars, _current_letter))
+                    {
+                        _has_vars += match;
+                    }
+                }
+                else
+                {
+                    _has_vars += match;
+                }
+            }
+        }
+        return _has_vars;
+    }
+*/
+
 }
