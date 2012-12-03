@@ -1,0 +1,16 @@
+﻿body {
+}
+
+#content {
+    width: 300px;
+    margin: auto;
+    margin-top: 200px;
+}
+
+#calcimg {
+    margin-left: 60px;
+}
+
+#submit_button {
+    margin-left: 20px;
+}
