@@ -71,15 +71,18 @@ public class ExpressionValidator
     public string FindVariables()
     {
         MatchCollection _match_vars;
-        if(Regex.IsMatch(_expression, @"[a-j]"))
+        if (_expression != null)
         {
-            _match_vars = Regex.Matches(_expression, @"[a-j]");
-            return _match_vars.ToString();
-        } 
-        else
-        {
-            return null;
+            if (Regex.IsMatch(_expression, @"[a-j]"))
+            {
+                _match_vars = Regex.Matches(_expression, @"[a-j]");
+                return _match_vars.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
-
+        return null;
     }
 }
