@@ -18,16 +18,10 @@ public class ExpressionValidator
     
     public bool validation(ref string error)
     {
-        //
-        //  TODO
-        // 1: 
-        // 2: 
-        // 3: 
-        // 4: matching parentheses
         Regex _invalid_tokens = new Regex(@"[^0-9a-z/+///*/%-\//()]?-i]");
         Regex _valid_digits = new Regex(@"[0-9]");
         Regex _valid_variables = new Regex(@"[a-j]?-i");
-        Regex _valid_operators = new Regex(@"[///+/*/%-]");
+        Regex _valid_operators = new Regex(@"[///+/*/%-/(/)]");
         if (_expression != null)
         {
             _split_expression = _expression.Split(' ');
