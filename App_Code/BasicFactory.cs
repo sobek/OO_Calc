@@ -6,6 +6,7 @@ using System.Web;
 /// <summary>
 /// Return concrete classes; creating a new class for each request.
 /// </summary>
+
 public class BasicFactory : AbstractFactory
 {
 	public BasicFactory()

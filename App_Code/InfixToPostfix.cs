@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Web;
 
@@ -15,39 +16,35 @@ public class InfixToPostfix
     private string[] _infix;
     private Command _cmd;
     private Stack<Command> _temp_stack = new Stack<Command>();
+    int temp;
+
+    delegate Command MethodChooser();
 
     public InfixToPostfix(AbstractFactory factory, Stack<Command> postfix, string infix)
     {
         _infix = infix.Split(' ');
         _cmd = null;
+        Hashtable _command_set = new Hashtable();
+        _command_set.Add("+", new MethodChooser(factory.CreateAddCommand));
+        _command_set.Add("-", new MethodChooser(factory.CreateSubtractCommand));
+        _command_set.Add("/", new MethodChooser(factory.CreateDivideCommand));
+        _command_set.Add("*", new MethodChooser(factory.CreateMultiplyCommand));
+        _command_set.Add("%", new MethodChooser(factory.CreateModulusCommand));
 
         foreach (string _input in _infix)
         {
-            switch (_input)
+            try
             {
-                case "+":
-                    _cmd = factory.CreateAddCommand();
-                    break;
-                case "-":
-                    _cmd = factory.CreateSubtractCommand();
-                    break;
-                case "*":
-                    _cmd = factory.CreateMultiplyCommand();
-                    break;
-                case "/":
-                    _cmd = factory.CreateDivideCommand();
-                    break;
-                case "%":
-                    _cmd = factory.CreateModulusCommand();
-                    break;
-                case "(":
-                case ")":
-                    _cmd = null;
-                    break;
-                default:
-                    int _input_to_int = Convert.ToInt32(_input); 
-                    _cmd = factory.CreateNumberCommand(_input_to_int);
-                    break;
+                temp = Convert.ToInt32(_input);
+                _cmd = factory.CreateNumberCommand(temp);   
+            }
+            catch (FormatException)
+            {
+                if (_command_set.ContainsKey(_input))
+                {
+                    _cmd = ((MethodChooser)_command_set[_input])();
+                }
+                // Only other input should be ')' and '(' which will roll down to shunting yard.
             }
 /************* Shunting Yard Algorithm****************/
             switch (_input)
